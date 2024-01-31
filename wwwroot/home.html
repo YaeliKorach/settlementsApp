@@ -62,7 +62,7 @@
             const tableBody = document.querySelector('#settlementsTable tbody');
             tableBody.innerHTML = '';
 
-            const settlementsToRender = data || settlementsData; // Use the provided data or default to settlementsData
+            const settlementsToRender = data || settlementsData; 
 
             const startIndex = (currentPage - 1) * itemsPerPage;
             const endIndex = startIndex + itemsPerPage;
@@ -82,7 +82,7 @@
             }
         }
         function sortSettlements(order) {
-            // Make a copy of the original data
+            
             sortedSettlementsData = settlementsData.slice();
 
             sortedSettlementsData.sort((a, b) => {
@@ -94,7 +94,7 @@
                 } else if (order === 'desc') {
                     return nameB.localeCompare(nameA);
                 } else {
-                    return 0; // No change in order
+                    return 0;
                 }
             });
 
@@ -104,22 +104,16 @@
             const searchTerm = document.getElementById("searchInput").value.toLowerCase();
 
             if (searchTerm === '') {
-                // If the input is empty, reset to the original data
+               
                 settlementsData = settlementsData;
             } else {
-                // Filter settlementsData based on the search term
+              
                 settlementsData = settlementsData.filter(settlement =>
                     settlement.name.toLowerCase().includes(searchTerm)
                 );
             }
 
             renderTable(settlementsData); 
-        }
-        let editingId = null;
-
-        function editSettlement(id) {
-            editingId = id;
-            renderTable();
         }
 
         function deleteSettlement(id) {
@@ -131,7 +125,7 @@
                 })
                     .then(response => {
                         if (response.ok) {
-                            // Assuming settlementsData is a global array
+                           
                             settlementsData = settlementsData.filter(settlement => settlement.id !== id);
                             renderTable();
                         } else {
@@ -164,7 +158,7 @@
             }
         }
 
-        // Fetch data from the server
+        
         fetch('https://localhost:7293/api/Settlement')
             .then(response => response.json())
             .then(data => {
