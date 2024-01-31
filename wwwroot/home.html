@@ -33,15 +33,15 @@
 
     <div>
         <input type="text" id="searchInput" placeholder="חיפוש יישוב" onchange="searchSettlements()" />
-        <button onclick="sortSettlements('asc')">Sort Ascending</button>
-        <button onclick="sortSettlements('desc')">Sort Descending</button>
+        <button onclick="sortSettlements('asc')">מיון עולה</button>
+        <button onclick="sortSettlements('desc')">מיון יורד</button>
         <a href="settlement.html">הוספת עיר</a>
     </div>
 
     <table id="settlementsTable">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>מספר</th>
                 <th>יישוב</th>
                 <th>הפעולות</th>
             </tr>
@@ -74,8 +74,8 @@
                 <td>${settlement.id}</td>
                 <td>${settlement.name}</td>
                 <td>
-                    <a href="settlement.html?id=${settlement.id}">Edit</a>
-                    <button onclick="deleteSettlement(${settlement.id})">Delete</button>
+                    <a href="settlement.html?id=${settlement.id}">עריכה</a>
+                    <button onclick="deleteSettlement(${settlement.id})">מחיקה</button>
                 </td>
             `;
                 tableBody.appendChild(row);

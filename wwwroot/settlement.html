@@ -6,18 +6,18 @@
 </head>
 <body>
     <div>
-        <h2>Create New Settlement</h2>
+        <h2>הוספת ישוב לרשימה</h2>
         <form id="createSettlementForm">
             <label for="newSettlementName">שם יישוב</label>
             <input type="text" id="newSettlementName" required>
             <button type="button" onclick="createSettlement()">הוספה</button>
         </form>
     </div>
-    <h2>Edit Settlement</h2>
+    <h2>עדכון שם יישוב</h2>
     <form id="updateSettlementForm">
-        <label for="updateSettlementName">New Settlement Name:</label>
+        <label for="updateSettlementName">שם חדש:</label>
         <input type="text" id="updateSettlementName" required>
-        <button type="button" onclick="updateSettlement()">Update Settlement</button>
+        <button type="button" onclick="updateSettlement()">עדכן</button>
     </form>
     <script>
         function createSettlement() {
