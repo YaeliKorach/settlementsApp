@@ -1,0 +1,33 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\משתמש זה\\3D Objects\\web\\WebApplicationTask\\WebApplicationTask\\wwwroot\\JS\\home.js",
+      "PackagePath": "staticwebassets\\JS\\home.js"
+    },
+    {
+      "Id": "C:\\Users\\משתמש זה\\3D Objects\\web\\WebApplicationTask\\WebApplicationTask\\wwwroot\\home.html",
+      "PackagePath": "staticwebassets\\home.html"
+    },
+    {
+      "Id": "C:\\Users\\משתמש זה\\3D Objects\\web\\WebApplicationTask\\WebApplicationTask\\wwwroot\\settlement.html",
+      "PackagePath": "staticwebassets\\settlement.html"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.WebApplicationTask.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.WebApplicationTask.props",
+      "PackagePath": "build\\WebApplicationTask.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.WebApplicationTask.props",
+      "PackagePath": "buildMultiTargeting\\WebApplicationTask.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.WebApplicationTask.props",
+      "PackagePath": "buildTransitive\\WebApplicationTask.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

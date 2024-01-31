@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settlements CRUD</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .edit-mode {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <input type="text" id="searchInput" placeholder="חיפוש יישוב" onchange="searchSettlements()" />
+        <button onclick="sortSettlements('asc')">Sort Ascending</button>
+        <button onclick="sortSettlements('desc')">Sort Descending</button>
+        <a href="settlement.html">הוספת עיר</a>
+    </div>
+
+    <table id="settlementsTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>יישוב</th>
+                <th>הפעולות</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <div>
+        <button onclick="previousPage()">הקודם</button>
+        <span id="currentPage">1</span>
+        <button onclick="nextPage()">הבא</button>
+    </div>
+
+    <script>
+        let settlementsData = []; 
+
+        function renderTable(data) {
+            const tableBody = document.querySelector('#settlementsTable tbody');
+            tableBody.innerHTML = '';
+
+            const settlementsToRender = data || settlementsData; // Use the provided data or default to settlementsData
+
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+
+            for (let i = startIndex; i < endIndex && i < settlementsToRender.length; i++) {
+                const settlement = settlementsToRender[i];
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                <td>${settlement.id}</td>
+                <td>${settlement.name}</td>
+                <td>
+                    <a href="settlement.html?id=${settlement.id}">Edit</a>
+                    <button onclick="deleteSettlement(${settlement.id})">Delete</button>
+                </td>
+            `;
+                tableBody.appendChild(row);
+            }
+        }
+        function sortSettlements(order) {
+            // Make a copy of the original data
+            sortedSettlementsData = settlementsData.slice();
+
+            sortedSettlementsData.sort((a, b) => {
+                const nameA = a.name.toLowerCase();
+                const nameB = b.name.toLowerCase();
+
+                if (order === 'asc') {
+                    return nameA.localeCompare(nameB);
+                } else if (order === 'desc') {
+                    return nameB.localeCompare(nameA);
+                } else {
+                    return 0; // No change in order
+                }
+            });
+
+            renderTable(sortedSettlementsData);
+        }
+        function searchSettlements() {
+            const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+
+            if (searchTerm === '') {
+                // If the input is empty, reset to the original data
+                settlementsData = settlementsData;
+            } else {
+                // Filter settlementsData based on the search term
+                settlementsData = settlementsData.filter(settlement =>
+                    settlement.name.toLowerCase().includes(searchTerm)
+                );
+            }
+
+            renderTable(settlementsData); 
+        }
+        let editingId = null;
+
+        function editSettlement(id) {
+            editingId = id;
+            renderTable();
+        }
+
+        function deleteSettlement(id) {
+            const confirmation = confirm('Are you sure you want to delete this settlement?');
+
+            if (confirmation) {
+                fetch(`https://localhost:7293/api/Settlement/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            // Assuming settlementsData is a global array
+                            settlementsData = settlementsData.filter(settlement => settlement.id !== id);
+                            renderTable();
+                        } else {
+                            console.error('Error deleting settlement:', response.statusText);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error deleting settlement:', error);
+                    });
+            }
+        }
+
+        let currentPage = 1;
+        const itemsPerPage = 5;
+
+        function previousPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                renderTable();
+                document.getElementById('currentPage').innerText = currentPage;
+            }
+        }
+
+        function nextPage() {
+            const totalPages = Math.ceil(settlementsData.length / itemsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderTable();
+                document.getElementById('currentPage').innerText = currentPage;
+            }
+        }
+
+        // Fetch data from the server
+        fetch('https://localhost:7293/api/Settlement')
+            .then(response => response.json())
+            .then(data => {
+                settlementsData = data;
+                renderTable();
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    </script>
+
+</body>
+</html>

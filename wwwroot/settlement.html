@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <h2>Create New Settlement</h2>
+        <form id="createSettlementForm">
+            <label for="newSettlementName">שם יישוב</label>
+            <input type="text" id="newSettlementName" required>
+            <button type="button" onclick="createSettlement()">הוספה</button>
+        </form>
+    </div>
+    <h2>Edit Settlement</h2>
+    <form id="updateSettlementForm">
+        <label for="updateSettlementName">New Settlement Name:</label>
+        <input type="text" id="updateSettlementName" required>
+        <button type="button" onclick="updateSettlement()">Update Settlement</button>
+    </form>
+    <script>
+        function createSettlement() {
+            const newSettlementName = document.getElementById("newSettlementName").value;
+
+
+            const newSettlement = {
+                name: newSettlementName
+
+            };
+            fetch('https://localhost:7293/api/Settlement', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newSettlement),
+            })
+                .then(response => response.json())
+                .then(createdSettlement => {
+                    console.log('Settlement created:', createdSettlement);
+                })
+                .catch(error => {
+                    console.error('Error creating settlement:', error);
+                });
+        }
+        function updateSettlement() {
+            const updateSettlementId = new URLSearchParams(window.location.search).get('id');
+            const updateSettlementName = document.getElementById("updateSettlementName").value;
+
+            const updatedSettlement = {
+                Id: updateSettlementId,
+                Name: updateSettlementName
+            };
+
+            fetch(`https://localhost:7293/api/Settlement/${updateSettlementId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedSettlement),
+            })
+                .then(response => response.json())
+                .then(updatedSettlement => {
+                    console.log('Settlement updated:', updatedSettlement);
+                    // You may want to redirect or perform other actions here
+                })
+                .catch(error => {
+                    console.error('Error updating settlement:', error);
+                });
+        }
+    </script>
+</body>
+</html>

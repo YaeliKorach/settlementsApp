@@ -1,0 +1,77 @@
+{
+  "Version": 1,
+  "Hash": "j9cIzJnLeW4/IPgX2RinwOz3ItAKdgnu7OwC23X449Q=",
+  "Source": "WebApplicationTask",
+  "BasePath": "_content/WebApplicationTask",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "WebApplicationTask\\wwwroot",
+      "Source": "WebApplicationTask",
+      "ContentRoot": "C:\\Users\\משתמש זה\\3D Objects\\web\\WebApplicationTask\\WebApplicationTask\\wwwroot\\",
+      "BasePath": "_content/WebApplicationTask",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\משתמש זה\\3D Objects\\web\\WebApplicationTask\\WebApplicationTask\\wwwroot\\home.html",
+      "SourceId": "WebApplicationTask",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\משתמש זה\\3D Objects\\web\\WebApplicationTask\\WebApplicationTask\\wwwroot\\",
+      "BasePath": "_content/WebApplicationTask",
+      "RelativePath": "home.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\home.html"
+    },
+    {
+      "Identity": "C:\\Users\\משתמש זה\\3D Objects\\web\\WebApplicationTask\\WebApplicationTask\\wwwroot\\JS\\home.js",
+      "SourceId": "WebApplicationTask",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\משתמש זה\\3D Objects\\web\\WebApplicationTask\\WebApplicationTask\\wwwroot\\",
+      "BasePath": "_content/WebApplicationTask",
+      "RelativePath": "JS/home.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\JS\\home.js"
+    },
+    {
+      "Identity": "C:\\Users\\משתמש זה\\3D Objects\\web\\WebApplicationTask\\WebApplicationTask\\wwwroot\\settlement.html",
+      "SourceId": "WebApplicationTask",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\משתמש זה\\3D Objects\\web\\WebApplicationTask\\WebApplicationTask\\wwwroot\\",
+      "BasePath": "_content/WebApplicationTask",
+      "RelativePath": "settlement.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\settlement.html"
+    }
+  ]
+}
